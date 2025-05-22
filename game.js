@@ -72,7 +72,8 @@ function create () {
     .create(200, config.height - 56, 'pipe1')
     .setOrigin(0.5, 0.5)
     .refreshBody()
-   
+    
+   //voy a poner mi piso del castillo xd xD Xd XD borren eso  baneen a manu
 
   this.mario = this.physics.add.sprite(50, 100, 'mario')
     .setOrigin(0, 1)
