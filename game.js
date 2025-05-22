@@ -4,15 +4,15 @@ import { createAnimations } from "./animations.js"
 
 const config = {
   type: Phaser.AUTO, // webgl, canvas
-  width: 256,
-  height: 244,
+  width: 1920,
+  height: 900,
   backgroundColor: '#049cd8',
   parent: 'game',
   physics: {
     default: 'arcade',
     arcade: {
       gravity: { y: 300 },
-      debug: false
+      debug: true
     }
   },
   scene: {
@@ -34,6 +34,11 @@ function preload () {
   this.load.image(
     'floorbricks',
     'assets/scenery/overworld/floorbricks.png'
+  )
+
+  this.load.image(
+    'pipe1',
+    'assets/scenery/pipe1.png'
   )
 
   this.load.spritesheet(
@@ -63,6 +68,12 @@ function create () {
     .setOrigin(0, 0.5)
     .refreshBody()
 
+  this.floor
+    .create(200, config.height - 56, 'pipe1')
+    .setOrigin(0.5, 0.5)
+    .refreshBody()
+   
+
   this.mario = this.physics.add.sprite(50, 100, 'mario')
     .setOrigin(0, 1)
     .setCollideWorldBounds(true)
@@ -70,6 +81,7 @@ function create () {
 
   this.physics.world.setBounds(0, 0, 2000, config.height)
   this.physics.add.collider(this.mario, this.floor)
+  this.physics.add.collider(this.mario, this.pipe1)
 
   this.cameras.main.setBounds(0, 0, 2000, config.height)
   this.cameras.main.startFollow(this.mario)
