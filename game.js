@@ -135,7 +135,7 @@ function create () {
 
   
   
-  //agregamos cstillo
+  //agregamos castillo
   this.add.image(1750,692,'castle')
     .setOrigin(0, 0)
     .setScale(2)
@@ -150,7 +150,7 @@ function create () {
 //agrego pasto
  this.add.image(100,835,'arbusto')
   .setScale(1)
-
+//agrega bloques de escalera
   this.floor.create(660, 836, 'block')
   .setScale(2)
     this.floor.create(690, 806, 'block')
