@@ -3,7 +3,6 @@
 import { createAnimations } from "./animations.js"
 
 const config = {
-  autoFocus: false,
   type: Phaser.AUTO, // webgl, canvas
   width: 1920,
   height: 900,
@@ -12,13 +11,8 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-
-      gravity: { y: 300 },
-      debug: true,
-
-      gravity: { y: 100 },
+      gravity: { y: 80 },
       debug: false
-
     }
   },
   scene: {
@@ -42,16 +36,6 @@ function preload () {
     'assets/scenery/overworld/floorbricks.png'
   )
 
-  this.load.image(
-    'pipe1',
-    'assets/scenery/pipe1.png'
-  )
-
-  this.load.spritesheet(
-    'goomba',
-    'assets/entities/overworld/goomba.png',
-    { frameWidth: 16, frameHeight: 16 }
-  )
   this.load.spritesheet(
     'mario', // <--- id
     'assets/entities/mario.png',
@@ -101,11 +85,6 @@ function create () {
   this.floor = this.physics.add.staticGroup()
 
   this.floor
-
-    .create(0, config.height - 32, 'floorbricks')
-    .setOrigin(0, 0.5)
-    .setScale(2)
-
     .create(1250, config.height - 97, 'pipe1')
     .setOrigin(0.5, 0.5)
     .setScale(2)
@@ -115,23 +94,12 @@ function create () {
     .create(0, config.height - 16, 'floorbricks')
     .setOrigin(0, 0.5)
      .setScale(2)
-
     .refreshBody()
 
   this.floor
-    .create(350, config.height - 32, 'floorbricks')
+    .create(150, config.height - 16, 'floorbricks')
     .setOrigin(0, 0.5)
-
-    .setScale(2)
-    .refreshBody()
-
-  this.floor
-    .create(460, config.height - 112, 'pipe1')
-    .setOrigin(0.5, 0.5)
-    .setScale(2)
-
      .setScale(2)
-
     .refreshBody()
 //agegamos dos pisos 
   this.floor
@@ -164,6 +132,8 @@ function create () {
     .setOrigin(0, 0.5)
      .setScale(2)
     .refreshBody()
+
+  
   
   //agregamos cstillo
   this.add.image(1750,692,'castle')
@@ -175,93 +145,77 @@ function create () {
   this.add.image(1667,552,'bandera')
   .setScale(2)
 //agrego bloque misterioso 
- this.add.image(200,800,'boquemisterioso')
+ this.floor.create(200,800,'boquemisterioso')
   .setScale(2)
 //agrego pasto
  this.add.image(100,835,'arbusto')
   .setScale(1)
 
-  this.add.image(660, 836, 'block')
+  this.floor.create(660, 836, 'block')
   .setScale(2)
-    this.add.image(690, 806, 'block')
+    this.floor.create(690, 806, 'block')
   .setScale(2)
-    this.add.image(720, 775, 'block')
+    this.floor.create(720, 775, 'block')
   .setScale(2)
-    this.add.image(750, 745, 'block')
-  .setScale(2)
-
-
-
-    
-   //baneen a manu
-
-
-    this.add.image(690, 836, 'block')
-  .setScale(2)
-    this.add.image(720, 806, 'block')
-  .setScale(2)
-    this.add.image(750, 775, 'block')
-  .setScale(2)
-    this.add.image(780, 745, 'block')
+    this.floor.create(750, 745, 'block')
   .setScale(2)
 
-    this.add.image(720, 836, 'block')
+
+    this.floor.create(690, 836, 'block')
   .setScale(2)
-    this.add.image(750, 806, 'block')
+    this.floor.create(720, 806, 'block')
   .setScale(2)
-    this.add.image(780, 775, 'block')
+    this.floor.create(750, 775, 'block')
   .setScale(2)
-    this.add.image(810, 745, 'block')
+    this.floor.create(780, 745, 'block')
+  .setScale(2)
+
+    this.floor.create(720, 836, 'block')
+  .setScale(2)
+    this.floor.create(750, 806, 'block')
+  .setScale(2)
+    this.floor.create(780, 775, 'block')
+  .setScale(2)
+    this.floor.create(810, 745, 'block')
   .setScale(2)
   
 
-    this.add.image(750, 836, 'block')
+    this.floor.create(750, 836, 'block')
   .setScale(2)
-    this.add.image(780, 806, 'block')
+    this.floor.create(780, 806, 'block')
   .setScale(2)
-    this.add.image(810, 775, 'block')
-  .setScale(2)
-
-
-      this.add.image(780, 836, 'block')
-  .setScale(2)
-    this.add.image(810, 806, 'block')
-  .setScale(2)
-    this.add.image(840, 775, 'block')
+    this.floor.create(810, 775, 'block')
   .setScale(2)
 
-        this.add.image(810, 836, 'block')
+
+      this.floor.create(780, 836, 'block')
   .setScale(2)
-    this.add.image(840, 806, 'block')
+    this.floor.create(810, 806, 'block')
   .setScale(2)
-     this.add.image(870, 806, 'block')
+    this.floor.create(840, 775, 'block')
   .setScale(2)
 
-          this.add.image(840, 836, 'block')
+        this.floor.create(810, 836, 'block')
   .setScale(2)
-          this.add.image(870, 836, 'block')
+    this.floor.create(840, 806, 'block')
   .setScale(2)
-          this.add.image(900, 836, 'block')
+     this.floor.create(870, 806, 'block')
   .setScale(2)
 
-  this.mario = this.physics.add.sprite(50, 100, 'mario')
+          this.floor.create(840, 836, 'block')
+  .setScale(2)
+          this.floor.create(870, 836, 'block')
+  .setScale(2)
+          this.floor.create(900, 836, 'block')
+  .setScale(2)
+  this.mario = this.physics.add.sprite(50, config.height - 80, 'mario')
     .setOrigin(0, 1)
     .setCollideWorldBounds(true)
     .setGravityY(300)
     .setScale(2)
 
-
-  this.enemy = this.physics.add.sprite(120, - 64, 'goomba')
-    .setScale(2)
-    .setOrigin(0,1)
-    .setGravityY(300)
-    .setGravityX(-50)
-  
-
-
   this.physics.world.setBounds(0, 0, 2000, config.height)
   this.physics.add.collider(this.mario, this.floor)
-  this.physics.add.collider(this.mario, this.pipe1)
 
   this.cameras.main.setBounds(0, 0, 2000, config.height)
   this.cameras.main.startFollow(this.mario)
@@ -310,12 +264,12 @@ function update () { // 3. continuamente
     this.mario.body.touching.down && this.mario.anims.play('mario-walk', true)
     this.mario.x += 2
     this.mario.flipX = false
-  } else if(this.mario.body.touching.down){
+  } else {
     this.mario.anims.play('mario-idle', true)
   }
 
   if (this.keys.up.isDown && this.mario.body.touching.down) {
-    this.mario.setVelocityY(-400)
+    this.mario.setVelocityY(-300)
     this.mario.anims.play('mario-jump', true)
   }
 
